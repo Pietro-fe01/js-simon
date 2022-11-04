@@ -41,13 +41,18 @@ playGame.addEventListener("click", function(){
     const toRemember = document.getElementById("to-remember");
     const secondDelay = 4000;
 
+    toRemember.innerHTML = "";
     document.getElementById("user-input").innerHTML = ``;
     document.getElementById("found-numbers").innerHTML = ``;
 
     // Il computer genera 5 numeri random e li inserisce in un array
     const cpuNumbers = numberGenerator(5);
-    console.log(`Stringa da ricordare: ${cpuNumbers}`);
-    toRemember.innerHTML = `Stringa da ricordare: ${cpuNumbers}`;
+    for (let i=0; i<cpuNumbers.length; i++){
+        let rememberItem = document.createElement("div");
+        rememberItem.classList.add("remember-square");
+        rememberItem.innerHTML = cpuNumbers[i];
+        toRemember.append(rememberItem);
+    }
 
     setTimeout(function(){
         toRemember.classList.add("d-none");

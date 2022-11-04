@@ -11,13 +11,15 @@ body{
     background-color: black;
     color: white;
     padding: .625rem;
+    max-width: 68.75rem;
+    margin: auto;
 }
 
 /*--------------
     UTILITIES   
 ---------------*/
 .d-none{
-    display: none;
+    display: none !important;
 }
 
 /*--------------
@@ -30,10 +32,39 @@ header{
 }
 
 button{
-width: 6.25rem;
-margin: .9375rem 0;
-cursor: pointer;
-border-radius: .3125rem;
-padding: .3125rem .625rem;
-font-weight: bold;
+    font-size: 30pt;
+    font-family: 'Press Start 2p';
+    margin: 1.25rem 0 1.875rem 0;
+    font-weight: bold;
+    padding: .3125rem .625rem;
+    text-shadow: -1px -1px black, 1px 1px white;
+	border-radius: 7px;
+    box-shadow: 0 .2em gray; 
+    cursor: pointer;
+}
+
+button:active {
+	box-shadow: none;
+    position: relative;
+    top: 5px;
+}
+
+/*--------------
+    MAIN   
+---------------*/
+#to-remember{
+    display: flex;
+    justify-content: space-around;
+    margin-top: .9375rem;
+}
+
+.remember-square{
+    width: 6.25rem;
+    height: 6.25rem;
+    background-color: red;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 .3125rem;
+    border-radius: 50%;
 }
