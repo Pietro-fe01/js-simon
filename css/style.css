@@ -10,6 +10,7 @@
 body{
     background-color: black;
     color: white;
+    padding: .625rem;
 }
 
 /*--------------
@@ -17,4 +18,22 @@ body{
 ---------------*/
 .d-none{
     display: none;
+}
+
+/*--------------
+    HEADER   
+---------------*/
+header{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+button{
+width: 6.25rem;
+margin: .9375rem 0;
+cursor: pointer;
+border-radius: .3125rem;
+padding: .3125rem .625rem;
+font-weight: bold;
 }
