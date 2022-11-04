@@ -40,6 +40,7 @@ header{
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
 }
 
 button{
@@ -59,6 +60,12 @@ button:active {
     position: relative;
     top: 5px;
 }
+
+#time{
+    background: black;
+    color:white;
+    font-size: 40px;
+  }
 
 /*--------------
     MAIN   

@@ -36,19 +36,40 @@ function numberGenerator(toGenerate){
 const playGame = document.getElementById("play-game");
 
 playGame.addEventListener("click", function(){
+    const timeDiv = document.getElementById("time");
     const userNumbers = [];
     const foundNumbers = [];
     const toRemember = document.getElementById("to-remember");
     const userInputContainer = document.getElementById("user-input");
-    const secondDelay = 4000;
+    let secondDelay = 30000;
 
     toRemember.innerHTML = "";
     document.getElementById("user-input").innerHTML = ``;
     document.getElementById("found-numbers").innerHTML = ``;
 
+    timeDiv.innerHTML = `00:${secondDelay / 1000}`;
+    timeDiv.style.color = 'white';
+    timeDiv.style.textDecoration = "none";
+    setInterval(function(){
+        if(secondDelay / 1000 > 0){
+            secondDelay = secondDelay - 1000;
+            if(secondDelay / 1000 > 9){
+                timeDiv.innerHTML = `00:${secondDelay / 1000}`;
+            }else{
+                timeDiv.innerHTML = `00:0${secondDelay / 1000}`;
+            }
+            if(secondDelay / 1000 === 0){
+                timeDiv.innerHTML = `TIME OUT!!`;
+                timeDiv.style.color = 'red';
+                timeDiv.style.textDecoration = "underline";
+            }
+        }
+    }, 1000);
+
     // Il computer genera 5 numeri random e li inserisce in un array
     const cpuNumbers = numberGenerator(5);
     console.log("La stringa da indovinare è: " + cpuNumbers);
+    toRemember.innerHTML = (`<h2 style="align-self: center; width: 205px">Da ricordare:</h2>`);
     for (let i=0; i<cpuNumbers.length; i++){
         let rememberItem = document.createElement("div");
         rememberItem.classList.add("item-square");
@@ -62,6 +83,7 @@ playGame.addEventListener("click", function(){
 
     // Questa funzione comincia con un delay di 30 secondi
     setTimeout(function(){
+        userInputContainer.innerHTML = (`<h2 style="align-self: center; width: 205px">Numeri inseriti:</h2>`);
         // L'user deve inserire i 5 numeri che ricorda
         for (let i =0; i < 5; i++) {
             let userInput = Number(prompt("Inserisci un numero"));
@@ -95,8 +117,6 @@ playGame.addEventListener("click", function(){
         toRemember.classList.remove("d-none");
     }, secondDelay + 100);
 });
-
-
 
 
 
