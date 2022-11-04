@@ -30,17 +30,15 @@ while(cpuNumbers.length < 5){
         cpuNumbers.push(generator);
     }
 }
-
-console.log(`Numeri da ricordare: ${cpuNumbers}`);
-container.append(`Memorizza questi numeri! ${cpuNumbers}`);
+console.log(`Stringa da ricordare: ${cpuNumbers}`);
+document.getElementById("to-remember").innerHTML = `Stringa da ricordare: ${cpuNumbers}`
 
 for (let i = 1; i <= 5; i++) {
     let userInput = Number(prompt("Inserisci un numero"));
     userNumbers.push(userInput);
 }
-
-container.append(`Numeri inseriti: ${userNumbers}`);
-
+console.log(`Numeri inseriti: ${userNumbers}`);
+document.getElementById("user-input").innerHTML = `Numeri inseriti: ${userNumbers}`
 
 for (let i = 0; i < 5; i++) {
     if(cpuNumbers.includes(userNumbers[i])){
@@ -48,4 +46,12 @@ for (let i = 0; i < 5; i++) {
     }
 }
 
-console.log(foundNumbers);
+if(foundNumbers.length === 0){
+    console.log("Nessun numero indovinato, ritenta!")
+    document.getElementById("found-numbers").innerHTML = `Nessun numero indovinato, ritenta!`;
+
+} else {
+    console.log(`Numeri indovinati: ${foundNumbers}`);
+    document.getElementById("found-numbers").innerHTML = `Numeri indovinati: ${foundNumbers}`;
+}
+
