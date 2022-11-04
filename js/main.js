@@ -39,6 +39,7 @@ playGame.addEventListener("click", function(){
     const userNumbers = [];
     const foundNumbers = [];
     const toRemember = document.getElementById("to-remember");
+    const userInputContainer = document.getElementById("user-input");
     const secondDelay = 4000;
 
     toRemember.innerHTML = "";
@@ -47,9 +48,10 @@ playGame.addEventListener("click", function(){
 
     // Il computer genera 5 numeri random e li inserisce in un array
     const cpuNumbers = numberGenerator(5);
+    console.log("La stringa da indovinare è: " + cpuNumbers);
     for (let i=0; i<cpuNumbers.length; i++){
         let rememberItem = document.createElement("div");
-        rememberItem.classList.add("remember-square");
+        rememberItem.classList.add("item-square");
         rememberItem.innerHTML = cpuNumbers[i];
         toRemember.append(rememberItem);
     }
@@ -61,28 +63,33 @@ playGame.addEventListener("click", function(){
     // Questa funzione comincia con un delay di 30 secondi
     setTimeout(function(){
         // L'user deve inserire i 5 numeri che ricorda
-        for (let i = 1; i <= 5; i++) {
+        for (let i =0; i < 5; i++) {
             let userInput = Number(prompt("Inserisci un numero"));
             userNumbers.push(userInput);
-        }
-        console.log(`Numeri inseriti: ${userNumbers}`);
-        document.getElementById("user-input").innerHTML = `Numeri inseriti: ${userNumbers}`;
 
-        // Qua faccio il check per vedere se i numeri che ho inserito sono contenuti nell'array della cpu
-        for (let i = 0; i < 5; i++) {
+            let userInputItem = document.createElement("div");
+            userInputItem.classList.add("item-square");
+            userInputItem.innerHTML = userInput;
+            
+            // Qua faccio il check per vedere se i numeri che ho inserito sono contenuti nell'array della cpu
             if(cpuNumbers.includes(userNumbers[i])){
                 foundNumbers.push(userNumbers[i]);
+                userInputItem.classList.add("green-correct");
+            } else {
+                userInputItem.classList.add("red-wrong");
             }
+
+            userInputContainer.append(userInputItem);
         }
+        console.log(`Numeri inseriti: ${userNumbers}`);
 
         // Controllo di aver indovinato almeno un numero, altrimenti stampo nessun numero
         if(foundNumbers.length === 0){
             console.log("Nessun numero indovinato, ritenta!")
             document.getElementById("found-numbers").innerHTML = `Nessun numero indovinato, ritenta!`;
-
         } else {
             console.log(`Numeri indovinati: ${foundNumbers}`);
-            document.getElementById("found-numbers").innerHTML = `Numeri indovinati: ${foundNumbers}`;
+            document.getElementById("found-numbers").innerHTML = `Numeri indovinati: ${foundNumbers.length}`;
         }
 
         toRemember.classList.remove("d-none");

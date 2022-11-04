@@ -10,9 +10,12 @@
 body{
     background-color: black;
     color: white;
-    padding: .625rem;
     max-width: 68.75rem;
     margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100vh;
 }
 
 /*--------------
@@ -20,6 +23,14 @@ body{
 ---------------*/
 .d-none{
     display: none !important;
+}
+
+.red-wrong{
+    background-color: red !important;
+}
+
+.green-correct{
+    background-color: green !important;
 }
 
 /*--------------
@@ -52,19 +63,31 @@ button:active {
 /*--------------
     MAIN   
 ---------------*/
-#to-remember{
-    display: flex;
-    justify-content: space-around;
-    margin-top: .9375rem;
+main{
+    padding: .625rem;
 }
 
-.remember-square{
+#to-remember,
+#user-input,
+#found-numbers{
+    display: flex;
+    justify-content: space-around;
+    margin: 1.25rem 0;
+}
+
+#found-numbers{
+    margin-top: 6.25rem;
+}
+
+.item-square{
     width: 6.25rem;
     height: 6.25rem;
-    background-color: red;
+    background-color: white;
+    color: black;
     display: flex;
     justify-content: center;
     align-items: center;
     margin: 0 .3125rem;
     border-radius: 50%;
+    border: 1px solid white;
 }
