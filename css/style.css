@@ -11,3 +11,10 @@ body{
     background-color: black;
     color: white;
 }
+
+/*--------------
+    UTILITIES   
+---------------*/
+.d-none{
+    display: none;
+}
